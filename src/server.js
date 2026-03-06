@@ -7,6 +7,4 @@ app.use(express.json());
 app.use("/categories", categoryRouter);
 app.use("/products", productRouter);
 app.use(errorHandler);
-app.listen(5001, () => {
-  console.log(" A A Falou");
-});
+app.listen(5001, () => {});
