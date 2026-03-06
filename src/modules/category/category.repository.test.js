@@ -1,11 +1,11 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { createCategoryRepository } from './category.repository.js';
+import { describe, it, expect, vi, beforeEach } from "vitest";
+import { createCategoryRepository } from "./category.repository.js";
 
-describe('Category Repository', () => {
+describe("Category Repository", () => {
   let prismaMock;
   let categoryRepository;
 
- ( beforeEach() => {
+  beforeEach(() => {
     prismaMock = {
       category: {
         create: vi.fn(),
@@ -18,9 +18,9 @@ describe('Category Repository', () => {
     categoryRepository = createCategoryRepository(prismaMock);
   });
 
-  describe('create', () => {
-    it('should create a category and return it', async () => {
-      const data = { name: 'Electronics' };
+  describe("create", () => {
+    it("should create a category and return it", async () => {
+      const data = { name: "Electronics" };
       const expectedCategory = { id: 1, ...data };
       prismaMock.category.create.mockResolvedValue(expectedCategory);
 
@@ -32,23 +32,25 @@ describe('Category Repository', () => {
     });
   });
 
-  describe('read', () => {
-    it('should return a category when found', async () => {
+  describe("read", () => {
+    it("should return a category when found", async () => {
       const data = { id: 1 };
-      const expectedCategory = { id: 1, name: 'Electronics' };
+      const expectedCategory = { id: 1, name: "Electronics" };
       prismaMock.category.findUnique.mockResolvedValue(expectedCategory);
 
       const result = await categoryRepository.read(data);
 
-      expect(prismaMock.category.findUnique).toHaveBeenCalledWith({ where: data });
+      expect(prismaMock.category.findUnique).toHaveBeenCalledWith({
+        where: data,
+      });
       expect(prismaMock.category.findUnique).toHaveBeenCalledTimes(1);
       expect(result).toEqual(expectedCategory);
     });
   });
 
-  describe('readAll', () => {
-    it('should return all categories', async () => {
-      const expectedCategories = [{ id: 1, name: 'Electronics' }];
+  describe("readAll", () => {
+    it("should return all categories", async () => {
+      const expectedCategories = [{ id: 1, name: "Electronics" }];
       prismaMock.category.findMany.mockResolvedValue(expectedCategories);
 
       const result = await categoryRepository.readAll();
@@ -58,10 +60,10 @@ describe('Category Repository', () => {
     });
   });
 
-  describe('update', () => {
-    it('should update and return the category', async () => {
+  describe("update", () => {
+    it("should update and return the category", async () => {
       const id = 1;
-      const data = { name: 'New Name' };
+      const data = { name: "New Name" };
       const expectedCategory = { id, ...data };
       prismaMock.category.update.mockResolvedValue(expectedCategory);
 
@@ -76,15 +78,17 @@ describe('Category Repository', () => {
     });
   });
 
-  describe('delete', () => {
-    it('should delete and return the category', async () => {
+  describe("delete", () => {
+    it("should delete and return the category", async () => {
       const id = 1;
-      const expectedCategory = { id, name: 'To Delete' };
+      const expectedCategory = { id, name: "To Delete" };
       prismaMock.category.delete.mockResolvedValue(expectedCategory);
 
       const result = await categoryRepository.delete(id);
 
-      expect(prismaMock.category.delete).toHaveBeenCalledWith({ where: { id } });
+      expect(prismaMock.category.delete).toHaveBeenCalledWith({
+        where: { id },
+      });
       expect(prismaMock.category.delete).toHaveBeenCalledTimes(1);
       expect(result).toEqual(expectedCategory);
     });
