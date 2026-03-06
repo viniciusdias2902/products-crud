@@ -17,11 +17,7 @@ const createCategoryController = (service) => {
       } else {
         result = await service.readAll();
       }
-      if (result) {
-        return res.status(200).json(result);
-      } else {
-        return res.status(404).json({ message: "Not Found" });
-      }
+      return res.status(200).json(result);
     },
     async update(req, res) {
       const id = req.validated.params.id;

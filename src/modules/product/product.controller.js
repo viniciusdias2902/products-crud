@@ -20,11 +20,7 @@ const createProductController = (service) => {
         products = await service.readAll();
       }
 
-      if (products) {
-        return res.status(200).json(products);
-      } else {
-        return res.status(404).json({ message: "Not Found" });
-      }
+      return res.status(200).json(products);
     },
     async update(req, res) {
       const data = req.validated.body;
