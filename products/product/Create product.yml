@@ -1,0 +1,24 @@
+info:
+  name: Create product
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{baseurl}}/products/"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "laptop backpack",
+        "stock": 12,
+        "price": 180.00,
+        "categoryId": "b120869b-fdf3-44ac-89f3-c8d27f9e3d8c"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

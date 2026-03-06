@@ -1,0 +1,4 @@
+name: products
+variables:
+  - name: baseurl
+    value: http://localhost:5001

@@ -1,0 +1,21 @@
+info:
+  name: Update category
+  type: http
+  seq: 1
+
+http:
+  method: PUT
+  url: "{{baseurl}}/categories/58ed1d60-fb12-4e56-a694-ae6fffe14bc3"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "toys"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

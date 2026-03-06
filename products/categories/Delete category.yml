@@ -1,0 +1,20 @@
+info:
+  name: Delete category
+  type: http
+  seq: 2
+
+http:
+  method: DELETE
+  url: "{{baseurl}}/categories/58ed1d60-fb12-4e56-a694-ae6fffe14bc3"
+  params:
+    - name: id
+      value: 58ed1d60-fb12-4e56-a694-ae6fffe14bc3
+      type: query
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

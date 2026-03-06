@@ -1,0 +1,19 @@
+info:
+  name: Get Products
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{baseurl}}/products/?sku=COM-4"
+  params:
+    - name: sku
+      value: COM-4
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

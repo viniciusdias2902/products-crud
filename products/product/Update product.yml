@@ -1,0 +1,23 @@
+info:
+  name: Update product
+  type: http
+  seq: 3
+
+http:
+  method: PUT
+  url: "{{baseurl}}/products/16c6e689-4f2f-40f8-9e22-4af5d7aa8965"
+  body:
+    type: json
+    data: |-
+      {
+          "name": "gaming laptop",
+          "stock": 8,
+          "price": 5200
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
