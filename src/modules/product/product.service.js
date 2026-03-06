@@ -14,7 +14,7 @@ const createProductService = (productRepository, categoryRepository) => {
       const sku = `${prefix}-${numberOfProducts}`;
       const productData = { ...data, sku };
       console.log(productData);
-      const product = productRepository.create(productData);
+      const product = await productRepository.create(productData);
       return product;
     },
     async readAll() {

@@ -5,10 +5,10 @@ info:
 
 http:
   method: GET
-  url: "{{baseurl}}/products/?sku=COM-4"
+  url: "{{baseurl}}/products/?categoryId=ec919a8f-4506-4a33-834a-7864db61a7b2"
   params:
-    - name: sku
-      value: COM-4
+    - name: categoryId
+      value: ec919a8f-4506-4a33-834a-7864db61a7b2
       type: query
   auth: inherit
 
