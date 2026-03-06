@@ -124,10 +124,11 @@ Requisição vazia para excluir o registro por ID. Retorna \`204 No Content\`.
 
 ---
 
-## Próximos Passos (Roadmap)
+## Roadmap
 
 Como este é um projeto em contínuo aprendizado, as seguintes implementações estão mapeadas para entrar em breve:
 
-- [ ] **Testes Automatizados:** Implementação de testes Unitários (para Services/Repositories) e de Integração (E2E nas rotas).
+- [x] **Testes Unitários:** Concluída a implementação de testes unitários (Services, Repositories e Controllers) com Vitest.
+- [ ] **Testes de Integração:** Implementação de testes E2E/Integração nas rotas.
 - [ ] **Dockerização:** Criação de `Dockerfile` e `docker-compose.yml` para padronização de ambiente (Node + Postgres).
 - [ ] **CI/CD & Deploy:** Deploy da API e banco de dados em plataformas Cloud.
