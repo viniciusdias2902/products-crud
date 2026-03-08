@@ -3,6 +3,8 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   test: {
     environment: "node",
+    setupFiles: ["./test-setup.js"],
+    fileParallelism: false,
     include: ["src/**/*.test.js", "src/**/*.spec.js"],
     coverage: {
       provider: "v8",

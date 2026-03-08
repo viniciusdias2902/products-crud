@@ -2,10 +2,10 @@ import "dotenv/config";
 import { PrismaClient } from "../generated/prisma/client.ts";
 import { PrismaPg } from "@prisma/adapter-pg";
 
-const adapter = new PrismaPg({
-  connectionString:
-    "postgresql://neondb_owner:npg_AaYhGX1Rgb7U@ep-square-cloud-ach46wio-pooler.sa-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require",
-});
+import pg from "pg";
+
+const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL });
+const adapter = new PrismaPg(pool);
 
 const prisma = new PrismaClient({
   adapter,

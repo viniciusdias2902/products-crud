@@ -1,10 +1,3 @@
-import express from "express";
-import categoryRouter from "./modules/category/category.routes.js";
-import productRouter from "./modules/product/product.routes.js";
-import { errorHandler } from "./middlewares/errorHandler.js";
-const app = express();
-app.use(express.json());
-app.use("/categories", categoryRouter);
-app.use("/products", productRouter);
-app.use(errorHandler);
+import { createApp } from "./app.js";
+const app = createApp();
 app.listen(5001, () => {});
