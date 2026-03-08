@@ -12,7 +12,7 @@ A ideia central deste repositório não é apenas criar uma API funcional, mas s
 - **RESTful Design:** Uso correto dos verbos HTTP (GET, POST, PUT, DELETE) e Status Codes padronizados (ex: `201 Created`, `204 No Content`, `404 Not Found`).
 - **Validação Rigorosa:** Entrada de dados da API validada na camada de rotas/middlewares (via Schema validation usando bibliotecas).
 - **Tratamento de Erros:** Middlewares globais para gerenciamento centralizado de exceções (capturando erros nativos do banco e transformando-os em respostas HTTP amigáveis).
-- **Escalabilidade (Em Breve):** Preparar o terreno para testes automatizados, contêinerização (Docker) e esteira de Deploy.
+- **Escalabilidade:** Testes automatizados (unitários e integração), contêinerização com Docker e preparação para deploy em VPS.
 
 ---
 
@@ -163,5 +163,5 @@ Como este é um projeto em contínuo aprendizado, as seguintes implementações 
 
 - [x] **Testes Unitários:** Implementado testes unitários (Services, Repositories e Controllers) com Vitest.
 - [x] **Testes de Integração:** Implementado testes E2E/Integração nas rotas utilizando banco de teste real.
-- [ ] **Dockerização:** Criação de `Dockerfile` e `docker-compose.yml` para padronização de ambiente (Node + Postgres).
+- [x] **Dockerização:** Criação de `Dockerfile` e `docker-compose.yml` para padronização de ambiente (Node + Postgres).
 - [ ] **Deploy em VPS:** Configuração do servidor e deploy da aplicação em uma VPS.
