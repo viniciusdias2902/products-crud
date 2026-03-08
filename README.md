@@ -169,8 +169,16 @@ Atualmente existem 3 categorias com 3 produtos cada, mas como a API é pública 
 
 **Endpoints:**
 
-- `GET /products-crud/categories` — Lista todas as categorias
-- `GET /products-crud/products` — Lista todos os produtos
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| POST   | `/products-crud/categories` | Cria uma categoria |
+| GET    | `/products-crud/categories` | Lista todas as categorias |
+| PUT    | `/products-crud/categories/:id` | Atualiza uma categoria |
+| DELETE | `/products-crud/categories/:id` | Remove uma categoria |
+| POST   | `/products-crud/products` | Cria um produto |
+| GET    | `/products-crud/products` | Lista todos os produtos |
+| PUT    | `/products-crud/products/:id` | Atualiza um produto |
+| DELETE | `/products-crud/products/:id` | Remove um produto |
 
 ---
 
