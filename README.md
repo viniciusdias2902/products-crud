@@ -157,11 +157,26 @@ npm run test:coverage
 
 ---
 
-## Roadmap
+## API Pública
 
-Como este é um projeto em contínuo aprendizado, as seguintes implementações estão mapeadas para entrar em breve:
+A API está disponível em produção no endereço:
+
+```
+https://viniciusdias.tech/products-crud
+```
+
+Atualmente existem 3 categorias com 3 produtos cada, mas como a API é pública e permite criação, edição e exclusão, esses dados podem mudar a qualquer momento.
+
+**Endpoints:**
+
+- `GET /products-crud/categories` — Lista todas as categorias
+- `GET /products-crud/products` — Lista todos os produtos
+
+---
+
+## Roadmap
 
 - [x] **Testes Unitários:** Implementado testes unitários (Services, Repositories e Controllers) com Vitest.
 - [x] **Testes de Integração:** Implementado testes E2E/Integração nas rotas utilizando banco de teste real.
 - [x] **Dockerização:** Criação de `Dockerfile` e `docker-compose.yml` para padronização de ambiente (Node + Postgres).
-- [ ] **Deploy em VPS:** Configuração do servidor e deploy da aplicação em uma VPS.
+- [x] **Deploy em VPS:** Deploy em VPS com Docker, Nginx como reverse proxy e HTTPS via Let's Encrypt.
