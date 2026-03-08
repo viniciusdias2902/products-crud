@@ -45,50 +45,72 @@ A aplicação segue a divisão de responsabilidades:
 (Instruções baseadas em um setup com Node instalado localmente)
 
 ### 1. Pré-requisitos
+
 - Node.js (v18+)
 - Instância do PostgreSQL rodando localmente (ou via Docker)
 
 ### 2. Instalação
+
 Clone o projeto e instale as dependências:
+
 ```bash
 npm install
 ```
 
 ### 3. Configuração do Banco de Dados (.env)
+
 É **necessário** configurar a URL de conexão do PostgreSQL antes de inicializar a aplicação.
 Crie um arquivo `.env` na raiz do projeto e adicione sua string de conexão:
+
 ```env
 # Exemplo de configuração
 DATABASE_URL="postgresql://usuario:senha@localhost:5432/nomedobanco?schema=public"
 ```
 
 ### 4. Executando as Migrações
+
 Com o `.env` configurado, você precisa criar as tabelas no banco de dados. Execute as migrations do Prisma:
+
 ```bash
 npx prisma migrate dev
 ```
+
 Isso sincronizará o schema do Prisma com o seu PostgreSQL.
 
 ### 5. Executando a Aplicação
+
 Inicie a aplicação utilizando o Node:
+
 ```bash
 node src/index.js
 
 # Dica: Ou utilize a flag --watch se estiver no Node 20+
 # node --watch src/index.js
 ```
+
 A aplicação deverá inicializar na porta definida nas variáveis de ambiente ou na porta 3000 por padrão.
 
 ---
 
 ## Exemplos de Uso da API
 
-Abaixo estão exemplos básicos no formato JSON para testar a API (via Postman, Insomnia ou cURL) em `http://localhost:3000`.
+Você pode testar as requisições para a API de duas formas principais:
 
-### Entidade: Categoria
+### 1. Utilizando o Bruno (API Client)
+
+O **[Bruno](https://www.usebruno.com/)** é um client API de código aberto que armazena coleções diretamente no seu repositório onde desenvolvedores podem colaborar via Git.
+
+Os exemplos de requisições de categorias da aplicação estão disponíveis localmente na pasta `products`, permitindo testar diretamente sem configurar variáveis globais em outras ferramentas.
+
+![Interface do Bruno mostrando as rotas da API](images/bruno.png)
+
+### 2. Via JSON Puro (Postman, Insomnia ou cURL)
+
+Abaixo estão exemplos básicos no formato JSON para testar a API localmente na URL `http://localhost:3000`.
 
 **Criar Categoria (POST `/categories`)**
 Requer enviar apenas o nome.
+
 ```json
 {
   "name": "Eletrônicos"
@@ -98,29 +120,40 @@ Requer enviar apenas o nome.
 **Buscar Categorias (GET `/categories`)**
 Retorna a lista completa. Aceita Query Params para filtro (ex: `/categories?name=Eletrônicos`).
 
-### Entidade: Produto
+---
 
-**Criar Produto (POST `/products`)**
-Requer vincular a categoria existente (`categoryId`).
-```json
-{
-  "name": "Smartphone",
-  "price": 1999.90,
-  "sku": "SMART-123",
-  "categoryId": 1
-}
+## Como Testar a Aplicação
+
+Este projeto possui uma suíte de testes unitários e de integração utilizando o `Vitest` combinados ao `Supertest` para as requisições simuladas, e configurados para rodar iterando com um banco de dados local Postgres real para garantir a integridade.
+
+### Banco de Dados de Teste
+
+Para os testes de integração funcionarem, garanta que você preencheu o arquivo `.env.test` com uma `DATABASE_URL` exclusiva para testes, pois os dados são limpos a cada execução.
+
+```env
+# Exemplo .env.test
+DATABASE_URL="postgresql://usuario:senha@localhost:5432/nomedobanco_teste?schema=public"
 ```
 
-**Atualizar Produto (PUT `/products/:id`)**
-Altere propriedades de um produto via ID (ex: `/products/1`).
-```json
-{
-  "price": 1850.00
-}
+### Rodando os Testes
+
+Para executar todos os testes (unitários e de integração) de uma única vez no terminal:
+
+```bash
+npm test
 ```
 
-**Deletar Produto (DELETE `/products/:id`)**
-Requisição vazia para excluir o registro por ID. Retorna \`204 No Content\`.
+Para rodar em modo watch (atualiza automaticamente ao salvar arquivos):
+
+```bash
+npm run test:watch
+```
+
+Para gerar um relatório da cobertura de código dos testes:
+
+```bash
+npm run test:coverage
+```
 
 ---
 
@@ -128,7 +161,7 @@ Requisição vazia para excluir o registro por ID. Retorna \`204 No Content\`.
 
 Como este é um projeto em contínuo aprendizado, as seguintes implementações estão mapeadas para entrar em breve:
 
-- [x] **Testes Unitários:** Concluída a implementação de testes unitários (Services, Repositories e Controllers) com Vitest.
-- [ ] **Testes de Integração:** Implementação de testes E2E/Integração nas rotas.
+- [x] **Testes Unitários:** Implementado testes unitários (Services, Repositories e Controllers) com Vitest.
+- [x] **Testes de Integração:** Implementado testes E2E/Integração nas rotas utilizando banco de teste real.
 - [ ] **Dockerização:** Criação de `Dockerfile` e `docker-compose.yml` para padronização de ambiente (Node + Postgres).
-- [ ] **CI/CD & Deploy:** Deploy da API e banco de dados em plataformas Cloud.
+- [ ] **Deploy em VPS:** Configuração do servidor e deploy da aplicação em uma VPS.
