@@ -5,7 +5,7 @@ info:
 
 http:
   method: DELETE
-  url: "{{baseurl}}/products/11a58914-e430-47e3-a392-ea3f04975129"
+  url: "{{baseurl}}/products/f8875837-851b-4c06-8566-442c0656b0ee"
   auth: inherit
 
 settings:

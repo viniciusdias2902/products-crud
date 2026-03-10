@@ -1,14 +1,14 @@
 info:
-  name: Create Category
+  name: login
   type: http
-  seq: 4
+  seq: 2
 
 http:
   method: POST
-  url: "{{baseurl}}/categories/"
+  url: "{{baseurl}}/auth/login"
   body:
     type: json
-    data: '{"name": "books"}'
+    data: '{"email": "admin@test.com", "password": "12345678"}'
   auth: inherit
 
 settings:

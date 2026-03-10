@@ -8,13 +8,9 @@ http:
   url: "{{baseurl}}/products/"
   body:
     type: json
-    data: |-
-      {
-        "name": "laptop backpack",
-        "stock": 12,
-        "price": 180.00,
-        "categoryId": "b120869b-fdf3-44ac-89f3-c8d27f9e3d8c"
-      }
+    data: |2-
+       {"name": "javascript data structures", "price": 62.90, "stock": 35, "categoryId":
+        "4c8096ed-53d7-4910-83b6-7a83b01900b1"}
   auth: inherit
 
 settings:
