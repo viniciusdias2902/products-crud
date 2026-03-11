@@ -4,7 +4,9 @@ import { createUserRepository } from "./user.repository.js";
 import { createAuthService } from "./auth.service.js";
 import { createAuthController } from "./auth.controller.js";
 import { validator } from "../../middlewares/validator.js";
-import { loginSchema, registerSchema } from "./auth.schemas.js";
+import { authenticate } from "../../middlewares/authenticate.js";
+import { loginSchema, registerSchema, refreshSchema } from "./auth.schemas.js";
+
 const authRouter = express.Router();
 
 const userRepository = createUserRepository(prisma);
@@ -16,10 +18,19 @@ authRouter.post(
   validator({ body: registerSchema }),
   authController.register,
 );
+
 authRouter.post(
   "/login",
   validator({ body: loginSchema }),
   authController.login,
 );
+
+authRouter.post(
+  "/refresh",
+  validator({ body: refreshSchema }),
+  authController.refresh,
+);
+
+authRouter.post("/logout", authenticate, authController.logout);
 
 export default authRouter;

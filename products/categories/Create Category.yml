@@ -6,10 +6,15 @@ info:
 http:
   method: POST
   url: "{{baseurl}}/categories/"
+  headers:
+    - name: ""
+      value: ""
   body:
     type: json
     data: '{"name": "books"}'
-  auth: inherit
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI0YzdlZmVhNy1lNDFkLTRmMzItOWMxNy0yOGEyNmNmMzdjY2MiLCJlbWFpbCI6InVzZXJAdGVzdC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc3MzE3NTQ3MSwiZXhwIjoxNzczMTc5MDcxfQ.VARyE4tK5qsyKu0ARU0rSW46FxmEzy5npno9oYoK430
 
 settings:
   encodeUrl: true

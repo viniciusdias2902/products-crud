@@ -13,6 +13,15 @@ const createUserRepository = (prisma) => {
       const user = await prisma.user.findUnique({ where: { id } });
       return user;
     },
+    async updateRefreshToken(id, refreshToken) {
+      await prisma.user.update({
+        where: { id },
+        data: { refreshToken },
+      });
+    },
+    async delete(id) {
+      await prisma.user.delete({ where: { id } });
+    },
   };
 };
 

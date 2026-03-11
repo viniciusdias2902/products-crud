@@ -12,6 +12,16 @@ const createAuthController = (service) => {
       const result = await service.login(email, password);
       return res.status(200).json(result);
     },
+    async refresh(req, res) {
+      const { refreshToken } = req.validated.body;
+      const result = await service.refresh(refreshToken);
+      return res.status(200).json(result);
+    },
+
+    async logout(req, res) {
+      await service.logout(req.user.userId);
+      return res.status(204).send();
+    },
   };
 };
 
